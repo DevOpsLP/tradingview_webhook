@@ -47,7 +47,7 @@ app.post('/webhook', async (req, res) => {
         return res.status(400).send({ error: 'Insufficient USDT balance' });
       }
   
-      const balance = parseFloat(usdtWallet.balance); // Use USDT balance
+      const balance = parseFloat(usdtWallet.balance) - 1; // Use USDT balance
   
       // Fetch exchange info
       const exchangeInfo = await binanceClient.getExchangeInfo();
