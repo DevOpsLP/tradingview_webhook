@@ -35,6 +35,10 @@ app.post('/webhook', async (req, res) => {
     return res.status(400).send({ error: 'Missing required fields: symbol, price, or side' });
   }
   
+  if (symbol.endsWith('.P')) {
+    symbol = symbol.slice(0, -2);
+  }
+
   if (side !== 'BUY' && side !== 'SELL') {
     console.error('Invalid side. Must be either BUY or SELL');
     return res.status(400).send({ error: 'Invalid side. Must be either BUY or SELL' });
