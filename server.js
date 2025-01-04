@@ -28,7 +28,7 @@ const getDecimals = (stepSize) => {
 app.post('/webhook', async (req, res) => {
   console.log('Webhook received:', req.body);
   
-  const { symbol, price, side } = req.body;
+  let { symbol, price, side } = req.body;
   
   if (!symbol || !price || !side) {
     console.error('Missing required fields: symbol, price, or side');
