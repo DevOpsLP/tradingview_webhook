@@ -55,7 +55,7 @@ app.post('/webhook', async (req, res) => {
     }
   
     const balance = parseFloat(usdtWallet.balance) - 1; // Use USDT balance
-  
+    
     // Fetch exchange info
     const exchangeInfo = await binanceClient.getExchangeInfo();
     const symbolInfo = exchangeInfo.symbols.find((s) => s.symbol === symbol);
@@ -71,7 +71,7 @@ app.post('/webhook', async (req, res) => {
     console.error('LOT_SIZE filter not found for the symbol');
     return res.status(500).send({ error: 'LOT_SIZE filter not found for the symbol' });
     }
-  
+    await binanceClient.setLeverage({symbol, leverage});
     // Get decimals for step size
     const decimals = getDecimals(lotSizeFilter.stepSize);
   
