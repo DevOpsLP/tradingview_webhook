@@ -92,7 +92,7 @@ app.post('/webhook', async (req, res) => {
     openOrders[symbol] = { orderId: orderResponse.orderId, side, quantity };
   
     // Open WebSocket connection to Binance
-    const wsUrl = `wss://fstream.binance.com/ws/${symbol.toLowerCase()}@kline_4h`;
+    const wsUrl = `wss://fstream.binance.com/ws/${symbol.toLowerCase()}@kline_5m`;
     const ws = new WebSocket(wsUrl);
   
     // Handle WebSocket events
